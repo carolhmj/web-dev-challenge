@@ -1,0 +1,124 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+/*
+DESCRIPTION:
+
+You challenge is to create a responsive flip card. 
+The user should be able to hover or click on the card 
+and it needs to flip on the other side to reveal what's on the back. 
+
+Remember: the card needs to be responsive - as I change the size of my window, 
+the card needs to adjust to the new size and look natural. 
+
+transform-style, transform, transition, 
+perspective, pseudo-classes, cursor, 
+min- max- prefixes, ems and rems, 
+*/
+
+/* Write your code here 👇 */
+
+:root {
+    --card-width: calc(35vw);
+    --card-height: calc(35vw);
+    --card-front: #D9D9D9;
+    --card-back: #BFBFBF;
+    --card-border-radius: 15%;
+    --card-front-transform: rotateY(0deg);
+    --card-back-transform: rotateY(180deg);
+    --card-transition: transform 2s ease-in-out;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2.2vw;
+    font-weight: bold;
+    color: #403C3A;
+    background-color: #f0f0f0;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 10px;
+}
+
+.card {
+    position: relative;
+    width: var(--card-width);
+    height: var(--card-height);
+}
+
+.front {
+    background-color: var(--card-front);
+    transform: var(--card-front-transform);
+}
+
+.front.card-face {
+    padding: 2vw;
+}
+
+.back {
+    background-color: var(--card-back);
+    transform: var(--card-back-transform);
+    justify-content: center;
+}
+
+.card-face {
+    position: absolute;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.65em;
+    text-align: center;
+    border-radius: var(--card-border-radius);
+    width: var(--card-width);
+    min-width: var(--card-width);
+    max-width: var(--card-width);
+    height: var(--card-height);
+    transition: var(--card-transition);
+    box-sizing: border-box;
+}
+
+.card-face h1 {
+    margin: 0;
+}
+
+.card-face p {
+    color: #736E6C;
+}
+
+.card-face hr {
+    width: 100%;
+    border: 1px solid #736E6C;
+}
+
+.card:hover div:first-child {
+    transform: var(--card-back-transform);
+    transform-style: preserve-3d;
+}
+
+.card:hover div:nth-child(2) {
+    transform: var(--card-front-transform);
+    transform-style: preserve-3d;
+}
+
+#yee {
+    width: 100%;
+    height: 100%;
+    border-radius: var(--card-border-radius);
+}
+
+/*
+
+DETAILED INSTRUCTIONS
+1. Choose the required pseudo-class
+2. Figure out how to flip a card on the required event
+3. Make it responsive!
+
+*/
